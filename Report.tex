@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{ragged2e}
+
+
+\begin{document}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{Gebze Technical University}}
+\end{Center}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{Computer Engineering}}
+\end{Center}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{CSE 344 - 2021 Spring}}
+\end{Center}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{FINAL REPORT}}
+\end{Center}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{BERKE SÜSLÜ}}
+\end{Center}
+\begin{Center}
+{\fontsize{16pt}{19.2pt}\selectfont \textbf{161044076}}
+\end{Center}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\section{INTRODUCTION}
+\subsection{Problem Definition }
+\begin{justify}
+SQL database server simulation with multi-thread synchronization.
+\end{justify}
+\subsection{System Requirements}
+
+\vspace{\baselineskip}
+\begin{justify}
+Any computer with Ubuntu 14.04 LTS 32-bit Operating System.
+\end{justify}
+\section{METHOD}
+\subsection{Problem Solution Approach}
+Server:\\
+Firstly, the server program reads the parameters.If the parameters are invalid, the program exits.Then temporary creates a file because the daemon only have one instance.Basically, the file prevents to create another instance.After that,the server program reads the database and stores in a data structure.Then creates the threads with size of -l parameter. The program opens a socket in order to communication. Then, the program waits in a while loop.When a connection comes,it accepts the connection and adds into a queue.The program wakes a thread with using condition variable.When SIGINT signal occurs,the program waits for thread, frees its all resources and terminates.\\
+Threads:\\
+The threads are waits until the server wakes them up.The threads takes a socket file descriptor from queue and reads the query. Then, they parse the query and execute.They send the data using socket file descriptor.When all the queries are done, they waits for a connection or takes another socket file descriptor(if it's available).\\
+Client:\\
+The client reads the parameters.If the parameters are invalid, the program exits.Reads the query file and selects the row related to -i parameter.Opens a socket in order to communicate with server.Sends the queries and waits for the results.Then prints the results into the terminal and exits.\\
+NOTE:UPDATE command is not implemented.
+\section{RESULT}
+\subsection{Test Cases and Running Results}
+I used a dataset includes flag codes and flag labels.\\
+Running examples(server):\\
+\includegraphics[]{"server_example.jpg"}\\
+Running examples(client):\\
+\includegraphics[]{"client_example.jpg"}\\
+\end{document}
